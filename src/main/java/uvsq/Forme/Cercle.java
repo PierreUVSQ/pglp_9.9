@@ -1,6 +1,12 @@
-package uvsq;
+package uvsq.Forme;
 
-public class Rectangle extends Forme {
+public class Cercle extends Forme {
+
+
+    public Cercle(String nom){
+        super(nom);
+    }
+
     @Override
     public void afficher() {
 

@@ -1,9 +1,14 @@
-package uvsq;
+package uvsq.Forme;
 
 public class Carre extends Forme {
 
     private int x;
     private int y;
+
+    public Carre(String nom){
+        super(nom);
+
+    }
 
     @Override
     public void afficher() {

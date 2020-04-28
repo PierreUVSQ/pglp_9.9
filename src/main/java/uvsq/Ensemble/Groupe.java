@@ -1,4 +1,7 @@
-package uvsq;
+package uvsq.Ensemble;
+
+import uvsq.Forme.Element;
+import uvsq.Forme.Forme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +10,10 @@ public class Groupe extends Element {
 
   private List<Forme> liste;
 
-  public Groupe() {
-    liste = new ArrayList<>();
+  public Groupe(String nom) {
+
+      super(nom);
+      liste = new ArrayList<>();
   }
 
   public void ajoutForme(Forme forme){
