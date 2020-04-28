@@ -1,6 +1,6 @@
 package uvsq;
 
-public class Cercle implements Forme{
+public class Cercle extends Forme {
     @Override
     public void afficher() {
 

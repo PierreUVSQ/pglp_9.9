@@ -1,6 +1,6 @@
 package uvsq;
 
-public class Rectangle implements Forme {
+public class Rectangle extends Forme {
     @Override
     public void afficher() {
 

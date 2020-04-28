@@ -3,7 +3,7 @@ package uvsq;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Groupe implements Element {
+public class Groupe extends Element {
 
   private List<Forme> liste;
 
@@ -16,13 +16,19 @@ public class Groupe implements Element {
       this.liste.add(forme);
   }
 
-  public void deplacer(int x, int y){
+    public void afficher() {
+        for(Forme fo : this.liste){
+            fo.afficher();
+        }
+    }
+
+    public void deplacer(int x, int y){
       for(Forme fo : this.liste){
           fo.deplacer(x, y);
       }
   }
 
-  
+
 
 
 }

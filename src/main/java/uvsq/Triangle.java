@@ -1,6 +1,6 @@
 package uvsq;
 
-public class Triangle implements Forme {
+public class Triangle extends Forme {
     @Override
     public void afficher() {
 
