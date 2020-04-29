@@ -2,23 +2,23 @@ package uvsq.Forme;
 
 public class Carre extends Forme {
 
-    private int x;
-    private int y;
+  protected Point p;
+  protected int cote;
 
-    public Carre(String nom){
-        super(nom);
+  public Carre(String nom, Point p, int cote) {
+    super(nom);
+    this.p = p;
+    this. cote = cote;
 
-    }
+  }
 
-    @Override
-    public void afficher() {
-        System.out.println();
-    }
+  @Override
+  public void afficher() {
+    System.out.println(this.nom + "(Point=" + this.p.getPosition() + "," + "côté=" + this.cote);
+  }
 
-    @Override
-    public void deplacer(int x, int y) {
-        this.x = x;
-        this.y = y;
-
-    }
+  @Override
+  public void deplacer(int x, int y) {
+    this.p.deplacer(x, y);
+  }
 }

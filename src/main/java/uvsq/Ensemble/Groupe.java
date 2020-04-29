@@ -12,28 +12,23 @@ public class Groupe extends Element {
 
   public Groupe(String nom) {
 
-      super(nom);
-      liste = new ArrayList<>();
+    super(nom);
+    liste = new ArrayList<>();
   }
 
-  public void ajoutForme(Forme forme){
-
-      this.liste.add(forme);
+  public void ajoutForme(Forme forme) {
+    this.liste.add(forme);
   }
 
-    public void afficher() {
-        for(Forme fo : this.liste){
-            fo.afficher();
-        }
+  public void afficher() {
+    for (Forme fo : this.liste) {
+      fo.afficher();
     }
-
-    public void deplacer(int x, int y){
-      for(Forme fo : this.liste){
-          fo.deplacer(x, y);
-      }
   }
 
-
-
-
+  public void deplacer(int x, int y) {
+    for (Forme fo : this.liste) {
+      fo.deplacer(x, y);
+    }
+  }
 }
