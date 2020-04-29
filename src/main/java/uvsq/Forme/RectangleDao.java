@@ -4,17 +4,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CarreDao extends Dao<Carre> {
+public class RectangleDao extends Dao<Rectangle> {
 
   @Override
-  public Carre create(Carre obj) {
+  public Rectangle create(Rectangle obj) {
     this.connect();
-    try (PreparedStatement carreInsert =
-        this.connect.prepareStatement("INSERT INTO Carre(nom, x, y, cote) values(?, ?, ?)"); ) {
-      carreInsert.setString(1, obj.nom);
-      carreInsert.setInt(2, obj.p.x);
-      carreInsert.setInt(3, obj.p.y);
-      carreInsert.executeUpdate();
+    try (PreparedStatement insert =
+        this.connect.prepareStatement(
+            "INSERT INTO Rectangle(nom, x, y, longueur, hauteur) values(?, ?, ?, ?, ?)"); ) {
+      insert.setString(1, obj.nom);
+      insert.setInt(2, obj.bg.x);
+      insert.setInt(3, obj.bg.y);
+      insert.setInt(4, obj.longueur);
+      insert.setInt(5, obj.hauteur);
+      insert.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -23,19 +26,20 @@ public class CarreDao extends Dao<Carre> {
   }
 
   @Override
-  public Carre find(String id) {
-    Carre c = null;
+  public Rectangle find(String id) {
+    Rectangle r = null;
     this.connect();
     try (PreparedStatement select =
-        this.connect.prepareStatement("SELECT * FROM Carre C WHERE C.nom = ?")) {
+        this.connect.prepareStatement("SELECT * FROM Rectangle R WHERE R.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        c =
-            new Carre(
+        r =
+            new Rectangle(
                 res.getString("nom"),
                 new Point(
                     Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
-                Integer.parseInt(res.getString("cote")));
+                Integer.parseInt(res.getString("longueur")),
+                Integer.parseInt("hauteur"));
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -43,14 +47,14 @@ public class CarreDao extends Dao<Carre> {
 
     this.disconnect();
 
-    return c;
+    return r;
   }
 
   @Override
   public void delete(String id) {
     this.connect();
     try (PreparedStatement delete =
-        this.connect.prepareStatement("DELETE FROM Carre C WHERE C.nom = ?"); ) {
+        this.connect.prepareStatement("DELETE FROM Rectangle R WHERE R.nom = ?"); ) {
       delete.setString(1, id);
       delete.executeUpdate();
     } catch (SQLException e) {
