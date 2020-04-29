@@ -23,4 +23,9 @@ public class Rectangle extends Forme {
   public void deplacer(int x, int y) {
     this.bg.deplacer(x, y);
   }
+
+  @Override
+  public void deplacerDirection(int x, int y) {
+    this.bg.deplacer(this.bg.x + x, this.bg.y + y);
+  }
 }

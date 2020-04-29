@@ -21,4 +21,9 @@ public class Carre extends Forme {
   public void deplacer(int x, int y) {
     this.p.deplacer(x, y);
   }
+
+  @Override
+  public void deplacerDirection(int x, int y) {
+    this.deplacer(this.p.x + x, this.p.y + y);
+  }
 }

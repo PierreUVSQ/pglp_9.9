@@ -21,4 +21,9 @@ public class Cercle extends Forme {
   public void deplacer(int x, int y) {
     this.centre.deplacer(x, y);
   }
+
+  @Override
+  public void deplacerDirection(int x, int y) {
+    this.deplacer(this.centre.x + x, this.centre.y + y);
+  }
 }

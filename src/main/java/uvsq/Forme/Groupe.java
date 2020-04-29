@@ -1,4 +1,4 @@
-package uvsq.Ensemble;
+package uvsq.Forme;
 
 import uvsq.Forme.Element;
 import uvsq.Forme.Forme;
@@ -28,7 +28,7 @@ public class Groupe extends Element {
 
   public void deplacer(int x, int y) {
     for (Forme fo : this.liste) {
-      fo.deplacer(x, y);
+      fo.deplacerDirection(x, y);
     }
   }
 }

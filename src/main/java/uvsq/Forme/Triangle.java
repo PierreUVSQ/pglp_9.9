@@ -26,4 +26,9 @@ public class Triangle extends Forme {
     this.b.deplacer(this.b.x + (this.a.x - ancienX), this.b.y + (this.a.x - ancienY));
     this.c.deplacer(this.c.x + (this.a.x - ancienX), this.c.y + (this.a.x - ancienY));
   }
+
+  @Override
+  public void deplacerDirection(int x, int y) {
+    this.deplacer(this.a.x + x, this.a.y + y);
+  }
 }
