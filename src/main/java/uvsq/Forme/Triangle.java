@@ -18,7 +18,6 @@ public class Triangle extends Forme {
     System.out.println(this.nom + "(A=" + this.a.getPosition() +", B=" + this.b.getPosition() + "C=" + this.c.getPosition() + ")");
   }
 
-  @Override
   public void deplacer(int x, int y) {
     int ancienX = this.a.x;
     int ancienY = this.a.y;

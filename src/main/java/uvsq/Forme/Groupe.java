@@ -4,11 +4,12 @@ import uvsq.Forme.Element;
 import uvsq.Forme.Forme;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Groupe extends Element {
 
-  private List<Forme> liste;
+  private List<Element> liste;
 
   public Groupe(String nom) {
 
@@ -16,19 +17,26 @@ public class Groupe extends Element {
     liste = new ArrayList<>();
   }
 
-  public void ajoutForme(Forme forme) {
-    this.liste.add(forme);
+  public void ajoutForme(Element elem) {
+    this.liste.add(elem);
   }
 
   public void afficher() {
-    for (Forme fo : this.liste) {
-      fo.afficher();
+    for (Element elem : this.liste) {
+      elem.afficher();
     }
   }
 
-  public void deplacer(int x, int y) {
-    for (Forme fo : this.liste) {
-      fo.deplacerDirection(x, y);
+  public void deplacerDirection(int x, int y) {
+    for (Element elem : this.liste) {
+      elem.deplacerDirection(x, y);
     }
   }
+
+  public List<Element> getListeNonModifiable(){
+
+    return Collections.unmodifiableList(this.liste);
+
+  }
+
 }

@@ -10,5 +10,6 @@ public abstract class Element {
 
   public abstract void afficher();
 
-  public abstract void deplacer(int x, int y);
+  public abstract void deplacerDirection(int x, int y);
+
 }

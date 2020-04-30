@@ -19,7 +19,6 @@ public class Rectangle extends Forme {
     System.out.println();
   }
 
-  @Override
   public void deplacer(int x, int y) {
     this.bg.deplacer(x, y);
   }
