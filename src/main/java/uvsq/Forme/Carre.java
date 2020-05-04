@@ -14,7 +14,7 @@ public class Carre extends Forme {
 
   @Override
   public void afficher() {
-    System.out.println(this.nom + "(Point=" + this.p.getPosition() + "," + "côté=" + this.cote);
+    System.out.println(this.nom + "(Point = " + this.p.getPosition() + ", côté=" + this.cote + ")");
   }
 
   public void deplacer(int x, int y) {

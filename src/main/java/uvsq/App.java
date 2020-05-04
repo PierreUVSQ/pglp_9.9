@@ -1,8 +1,15 @@
 package uvsq;
 
+import uvsq.Commande.DrawingTUI;
+
 /** Hello world!. */
 public class App {
   public static void main(String[] args) {
-    System.out.println("Hello World!");
+
+    DrawingApp app = new DrawingApp();
+    app.run();
+
+
+
   }
 }

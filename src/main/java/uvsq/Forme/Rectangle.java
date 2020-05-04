@@ -15,8 +15,15 @@ public class Rectangle extends Forme {
 
   @Override
   public void afficher() {
-
-    System.out.println();
+    System.out.println(
+        this.nom
+            + "= ("
+            + bg.getPosition()
+            + ", longeur = "
+            + this.longueur
+            + ", hauteur ="
+            + this.hauteur
+            + ")");
   }
 
   public void deplacer(int x, int y) {
