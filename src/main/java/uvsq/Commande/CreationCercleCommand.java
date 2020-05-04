@@ -3,11 +3,10 @@ package uvsq.Commande;
 import uvsq.Forme.Cercle;
 import uvsq.Forme.Element;
 import uvsq.Forme.Point;
-import uvsq.Forme.Triangle;
 
 import java.util.List;
 
-public class CreationCercleCommand extends CreationFormeCommande{
+public class CreationCercleCommand extends CreationFormeCommand {
 
 
     private String nom;
