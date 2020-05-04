@@ -13,4 +13,6 @@ public abstract class Forme extends Element {
    */
   public abstract void deplacerDirection(int x, int y);
 
+  public abstract void deplacer(int x ,int y);
+
 }
