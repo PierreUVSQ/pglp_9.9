@@ -22,9 +22,11 @@ public class Groupe extends Element {
   }
 
   public void afficher() {
+    System.out.println("Groupe " + this.nom + ": ");
     for (Element elem : this.liste) {
       elem.afficher();
     }
+    System.out.println(";");
   }
 
   public void deplacerDirection(int x, int y) {
