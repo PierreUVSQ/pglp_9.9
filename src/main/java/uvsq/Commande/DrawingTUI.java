@@ -2,9 +2,9 @@ package uvsq.Commande;
 
 import uvsq.Forme.Element;
 import uvsq.Forme.Forme;
-import uvsq.Forme.Groupe;
 import uvsq.Forme.Point;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -15,10 +15,10 @@ public class DrawingTUI {
   private Map<String, Element> elementMap;
   private List<Element> elementListe;
 
-  public DrawingTUI(List<Element> elementListe ) {
+  public DrawingTUI() {
 
     this.scanner = new Scanner(System.in, "UTF-8");
-    this.elementListe = elementListe;
+    this.elementListe = new ArrayList<>();
 
   }
 
@@ -34,7 +34,7 @@ public class DrawingTUI {
     in = in.replaceAll("\\s+","");
     if (chaineDeCommande.matches("move")) {
         nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(","));
-        int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.indexOf(",")));
+        int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
         int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
         for(Element elem :elementListe ){
             if(elem.getNom().contentEquals(nomForme)){
@@ -113,7 +113,8 @@ public class DrawingTUI {
     }
     }
     catch(StringIndexOutOfBoundsException se){
-       // System.out.println("Veuillez entrer des informations valides");
+       se.printStackTrace();
+        // System.out.println("Veuillez entrer des informations valides");
     }
     return command;
   }

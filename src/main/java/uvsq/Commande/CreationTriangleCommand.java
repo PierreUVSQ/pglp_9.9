@@ -24,6 +24,8 @@ public class CreationTriangleCommand extends CreationFormeCommand {
 
     @Override
     public void execute() {
-        super.elementList.add(new Triangle(nom, a, b,c));
+        if(! this.exist(this.nom)) {
+            super.elementList.add(new Triangle(nom, a, b,c));
+        }
     }
 }

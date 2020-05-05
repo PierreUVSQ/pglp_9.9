@@ -10,13 +10,11 @@ import java.util.List;
 public class DrawingApp {
 
     private DrawingTUI draw;
-    private List<Element> elementList;
     private Command command;
 
     public DrawingApp(){
 
-        this.elementList = new ArrayList<>();
-        this.draw = new DrawingTUI(elementList);
+        this.draw = new DrawingTUI();
     }
 
   public void run() {

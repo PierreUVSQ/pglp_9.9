@@ -21,8 +21,9 @@ public class CreationCercleCommand extends CreationFormeCommand {
     }
 
     public void execute() {
-
-        super.elementList.add(new Cercle(nom, centre, rayon));
+        if(! this.exist(this.nom)) {
+            super.elementList.add(new Cercle(nom, centre, rayon));
+        }
 
     }
 

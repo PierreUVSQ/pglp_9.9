@@ -13,5 +13,21 @@ public abstract class CreationFormeCommand implements Command{
 
     }
 
+    public boolean exist(String nom) {
+
+        boolean res = false;
+
+        for(Element elem : elementList) {
+
+            if(elem.getNom().matches(nom)){
+                return true;
+            }
+
+        }
+
+
+        return false;
+    }
+
 
 }

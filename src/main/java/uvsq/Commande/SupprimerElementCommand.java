@@ -16,9 +16,9 @@ public class SupprimerElementCommand implements Command {
 
   @Override
   public void execute() {
-    for (Element elem : elementList) {
-      if (elem.getNom().contentEquals("aSupprimer")) {
-        this.elementList.remove(elem);
+    for (int i = 0; i < this.elementList.size(); i++) {
+      if (this.elementList.get(i).getNom().matches(aSupprimer)) {
+        this.elementList.remove(i);
       }
     }
   }

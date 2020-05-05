@@ -24,8 +24,9 @@ public class CreationRectangleCommand extends CreationFormeCommand {
 
     @Override
     public void execute() {
-
-        super.elementList.add(new Rectangle(nom, p, longueur, hauteur));
+        if(! this.exist(this.nom)) {
+            super.elementList.add(new Rectangle(nom, p, longueur, hauteur));
+        }
 
     }
 }
