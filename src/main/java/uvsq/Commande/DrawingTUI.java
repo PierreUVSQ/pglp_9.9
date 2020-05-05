@@ -2,6 +2,7 @@ package uvsq.Commande;
 
 import uvsq.Forme.Element;
 import uvsq.Forme.Forme;
+import uvsq.Forme.Groupe;
 import uvsq.Forme.Point;
 
 import java.util.ArrayList;
@@ -48,16 +49,34 @@ public class DrawingTUI {
         */
       } else if (chaineDeCommande.matches("group")) {
 
-        String nomGroupe = in.substring(in.indexOf("(") +1, in.indexOf(","));
-        String[] tableDeNom =
-            in.substring(in.lastIndexOf("(") + 1, in.indexOf(")")).split(",");
+        String nomGroupe = in.substring(in.indexOf("(") + 1, in.indexOf(","));
+        String[] tableDeNom = in.substring(in.lastIndexOf("(") + 1, in.indexOf(")")).split(",");
         command = new CreationGroupeCommand(nomGroupe, tableDeNom, elementListe);
+      } else if (chaineDeCommande.matches("moveGroup")) {
+
+        String[] info = in.split(",");
+        String nomGroupe = in.substring(in.indexOf("(") + 1, in.indexOf(","));
+        int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
+        int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
+        for (Element elem : elementListe) {
+          if (elem.getNom().matches(nomGroupe)) {
+            command = new DeplacerGroupeCommand((Groupe) elem, x, y);
+            break;
+          }
+        }
       } else if (chaineDeCommande.matches("delete")) {
 
         nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
         command = new SupprimerElementCommand(elementListe, nomForme);
 
-      } else if (creation[1].matches("=")) {
+      }
+      else if(chaineDeCommande.matches("save")){
+          
+
+
+      }
+
+      else if (creation[1].matches("=")) {
 
         nomForme = in.substring(0, in.indexOf("="));
         String typeForme = null;
@@ -100,19 +119,6 @@ public class DrawingTUI {
           command =
               new CreationTriangleCommand(
                   nomForme, new Point(ax, ay), new Point(bx, by), new Point(cx, cy), elementListe);
-        }
-
-      } else if (chaineDeCommande.matches("moveGroup")) {
-
-        String[] info = in.split(",");
-        String nomGroupe = info[0].substring(10);
-        int x = Integer.parseInt(info[1].substring(0));
-        int y = Integer.parseInt(info[2].substring(0, info[2].length() - 1));
-        for (Element elem : elementListe) {
-          if (elem.getNom().contentEquals(nomGroupe)) {
-            command = new DeplacerCommand((Forme) elem, x, y);
-            break;
-          }
         }
       }
     } catch (StringIndexOutOfBoundsException se) {
