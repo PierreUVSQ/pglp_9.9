@@ -10,10 +10,11 @@ public class CarreDao extends Dao<Carre> {
   public Carre create(Carre obj) {
     this.connect();
     try (PreparedStatement carreInsert =
-        this.connect.prepareStatement("INSERT INTO Carre(nom, x, y, cote) values(?, ?, ?)"); ) {
+        this.connect.prepareStatement("INSERT INTO Carre(nom, x, y, cote) values(?, ?, ?, ?)"); ) {
       carreInsert.setString(1, obj.nom);
       carreInsert.setInt(2, obj.p.x);
       carreInsert.setInt(3, obj.p.y);
+      carreInsert.setInt(4, obj.cote);
       carreInsert.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -30,12 +31,14 @@ public class CarreDao extends Dao<Carre> {
         this.connect.prepareStatement("SELECT * FROM Carre C WHERE C.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        c =
-            new Carre(
-                res.getString("nom"),
-                new Point(
-                    Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
-                Integer.parseInt(res.getString("cote")));
+        if(res.next()) {
+          c =
+              new Carre(
+                  res.getString("nom"),
+                  new Point(
+                      Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
+                  Integer.parseInt(res.getString("cote")));
+        }
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -56,6 +59,7 @@ public class CarreDao extends Dao<Carre> {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    this.disconnect();
   }
 
   @Override

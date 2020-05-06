@@ -33,13 +33,15 @@ public class RectangleDao extends Dao<Rectangle> {
         this.connect.prepareStatement("SELECT * FROM Rectangle R WHERE R.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        r =
-            new Rectangle(
-                res.getString("nom"),
-                new Point(
-                    Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
-                Integer.parseInt(res.getString("longueur")),
-                Integer.parseInt("hauteur"));
+        if(res.next()) {
+          r =
+              new Rectangle(
+                  res.getString("nom"),
+                  new Point(
+                      Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
+                  Integer.parseInt(res.getString("longueur")),
+                  Integer.parseInt(res.getString("hauteur")));
+        }
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -60,6 +62,7 @@ public class RectangleDao extends Dao<Rectangle> {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    this.disconnect();
   }
 
   @Override

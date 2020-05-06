@@ -1,25 +1,23 @@
 package uvsq.Commande;
 
-import uvsq.Forme.Element;
-import uvsq.Forme.Forme;
-import uvsq.Forme.Groupe;
-import uvsq.Forme.Point;
+import uvsq.Forme.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class DrawingTUI {
 
   private Scanner scanner;
-  private Map<String, Element> elementMap;
-  private List<Element> elementListe;
+  private Dessin dessin;
+ // private Dessin dessin;
+  private Dao dao;
 
   public DrawingTUI() {
 
     this.scanner = new Scanner(System.in, "UTF-8");
-    this.elementListe = new ArrayList<>();
+    this.dessin = new Dessin("DessinTest");
+    dao = DaoFactory.getDessinDao();
   }
 
   public Command nextCommand() {
@@ -36,7 +34,7 @@ public class DrawingTUI {
         nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(","));
         int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
         int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
-        for (Element elem : elementListe) {
+        for (Element elem : dessin.getListe()) {
           if (elem.getNom().contentEquals(nomForme)) {
             command = new DeplacerCommand((Forme) elem, x, y);
             break;
@@ -51,14 +49,14 @@ public class DrawingTUI {
 
         String nomGroupe = in.substring(in.indexOf("(") + 1, in.indexOf(","));
         String[] tableDeNom = in.substring(in.lastIndexOf("(") + 1, in.indexOf(")")).split(",");
-        command = new CreationGroupeCommand(nomGroupe, tableDeNom, elementListe);
+        command = new CreationGroupeCommand(nomGroupe, tableDeNom, dessin);
       } else if (chaineDeCommande.matches("moveGroup")) {
 
         String[] info = in.split(",");
         String nomGroupe = in.substring(in.indexOf("(") + 1, in.indexOf(","));
         int x = Integer.parseInt(in.substring(in.lastIndexOf("(") + 1, in.lastIndexOf(",")));
         int y = Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.indexOf(")")));
-        for (Element elem : elementListe) {
+        for (Element elem : dessin.getListe()) {
           if (elem.getNom().matches(nomGroupe)) {
             command = new DeplacerGroupeCommand((Groupe) elem, x, y);
             break;
@@ -67,13 +65,21 @@ public class DrawingTUI {
       } else if (chaineDeCommande.matches("delete")) {
 
         nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
-        command = new SupprimerElementCommand(elementListe, nomForme);
+        command = new SupprimerElementCommand(dessin, nomForme);
 
       }
       else if(chaineDeCommande.matches("save")){
-          
 
+         command = new SaveCommand(this.dessin);
+      }
+      else if(chaineDeCommande.matches("load")){
+        System.out.println("Load" + this.dessin.getNom());
+        command = new LoadCommand(this.dessin.getNom(), this);
 
+      }
+
+      else if(chaineDeCommande.matches("quit")) {
+        command = new QuitterCommand();
       }
 
       else if (creation[1].matches("=")) {
@@ -86,7 +92,7 @@ public class DrawingTUI {
             int y = Integer.parseInt(in.substring(in.indexOf(",") + 1, in.indexOf(")")));
             int rayon =
                 Integer.parseInt(in.substring(in.lastIndexOf(",") + 1, in.lastIndexOf(")")));
-            command = new CreationCercleCommand(nomForme, new Point(x, y), rayon, elementListe);
+            command = new CreationCercleCommand(nomForme, new Point(x, y), rayon, dessin);
           } catch (NumberFormatException ne) {
             System.out.println("Veuillez entrer des informations valides");
           }
@@ -95,7 +101,7 @@ public class DrawingTUI {
           int x = Integer.parseInt(carreInfo[0].substring(carreInfo[0].lastIndexOf("(") + 1));
           int y = Integer.parseInt(carreInfo[1].substring(0, carreInfo[1].indexOf(")")));
           int cote = Integer.parseInt(carreInfo[2].substring(0, carreInfo[2].length() - 1));
-          command = new CreationCarreCommand(nomForme, new Point(x, y), cote, elementListe);
+          command = new CreationCarreCommand(nomForme, new Point(x, y), cote, dessin);
         } else if (creation[2].substring(0, creation[2].indexOf("(")).matches("Rectangle")) {
           String[] rectangleInfo = in.split(",");
           int x =
@@ -106,7 +112,7 @@ public class DrawingTUI {
               Integer.parseInt(rectangleInfo[3].substring(0, rectangleInfo[3].indexOf(")") - 1));
           command =
               new CreationRectangleCommand(
-                  nomForme, new Point(x, y), longueur, hauteur, elementListe);
+                  nomForme, new Point(x, y), longueur, hauteur, dessin);
         } else if (creation[2].substring(0, creation[2].indexOf("(")).matches("Triangle")) {
           String[] triangleInfo = in.split(",");
           int ax =
@@ -118,7 +124,7 @@ public class DrawingTUI {
           int cy = Integer.parseInt(triangleInfo[3].substring(0, triangleInfo[3].indexOf(")") - 1));
           command =
               new CreationTriangleCommand(
-                  nomForme, new Point(ax, ay), new Point(bx, by), new Point(cx, cy), elementListe);
+                  nomForme, new Point(ax, ay), new Point(bx, by), new Point(cx, cy), dessin);
         }
       }
     } catch (StringIndexOutOfBoundsException se) {
@@ -130,8 +136,14 @@ public class DrawingTUI {
 
   public void afficherDessin() {
 
-    for (Element elem : elementListe) {
+    for (Element elem : dessin.getListe()) {
       elem.afficher();
     }
   }
+
+  public void setDessin(Dessin dessin) {
+    this.dessin = dessin;
+  }
+
+
 }

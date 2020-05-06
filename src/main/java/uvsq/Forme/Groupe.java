@@ -35,10 +35,8 @@ public class Groupe extends Element {
     }
   }
 
-  public List<Element> getListeNonModifiable(){
+  public List<Element> getListeNonModifiable() {
 
     return Collections.unmodifiableList(this.liste);
-
   }
-
 }

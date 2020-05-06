@@ -1,9 +1,9 @@
 package uvsq.Commande;
 
 import uvsq.Forme.Carre;
+import uvsq.Forme.Dessin;
 import uvsq.Forme.Element;
 import uvsq.Forme.Point;
-import uvsq.Forme.Rectangle;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class CreationCarreCommand extends CreationFormeCommand {
     private int cote;
 
 
-    public CreationCarreCommand(String nom, Point c, int cote, List<Element> elementList) {
+    public CreationCarreCommand(String nom, Point c, int cote, Dessin dessin) {
 
-        super(elementList);
+        super(dessin);
         this.nom = nom;
         this.c = c;
         this.cote = cote;
@@ -26,7 +26,7 @@ public class CreationCarreCommand extends CreationFormeCommand {
     @Override
     public void execute() {
         if(! this.exist(this.nom)) {
-            super.elementList.add(new Carre(nom, c, cote));
+            super.dessin.ajoutElement(new Carre(nom, c, cote));
         }
     }
 }

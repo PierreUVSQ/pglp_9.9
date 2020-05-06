@@ -8,8 +8,7 @@ public class Carre extends Forme {
   public Carre(String nom, Point p, int cote) {
     super(nom);
     this.p = p;
-    this. cote = cote;
-
+    this.cote = cote;
   }
 
   @Override

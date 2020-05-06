@@ -1,5 +1,6 @@
 package uvsq.Commande;
 
+import uvsq.Forme.Dessin;
 import uvsq.Forme.Element;
 import uvsq.Forme.Point;
 import uvsq.Forme.Rectangle;
@@ -13,8 +14,8 @@ public class CreationRectangleCommand extends CreationFormeCommand {
     private int hauteur;
     private String nom;
 
-    public CreationRectangleCommand(String nom, Point p, int longueur, int hauteur, List<Element> elementList) {
-        super(elementList);
+    public CreationRectangleCommand(String nom, Point p, int longueur, int hauteur, Dessin dessin) {
+        super(dessin);
         this.p = p;
         this.longueur = longueur;
         this.hauteur = hauteur;
@@ -25,7 +26,7 @@ public class CreationRectangleCommand extends CreationFormeCommand {
     @Override
     public void execute() {
         if(! this.exist(this.nom)) {
-            super.elementList.add(new Rectangle(nom, p, longueur, hauteur));
+            super.dessin.ajoutElement(new Rectangle(nom, p, longueur, hauteur));
         }
 
     }

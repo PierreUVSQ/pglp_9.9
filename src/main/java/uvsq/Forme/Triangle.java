@@ -15,7 +15,15 @@ public class Triangle extends Forme {
 
   @Override
   public void afficher() {
-    System.out.println(this.nom + "(A=" + this.a.getPosition() +", B=" + this.b.getPosition() + ", C=" + this.c.getPosition() + ")");
+    System.out.println(
+        this.nom
+            + "(A="
+            + this.a.getPosition()
+            + ", B="
+            + this.b.getPosition()
+            + ", C="
+            + this.c.getPosition()
+            + ")");
   }
 
   public void deplacer(int x, int y) {
