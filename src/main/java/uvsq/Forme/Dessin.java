@@ -36,4 +36,18 @@ public class Dessin {
   public List<Element> getListe() {
     return this.elementList;
   }
+
+  public boolean exists(String nom) {
+    for(int i = 0; i < this.elementList.size(); i++) {
+      if(this.elementList.get(i).getNom().matches(nom)) {
+
+        return true;
+
+      }
+
+
+    }
+    return false;
+  }
+
 }

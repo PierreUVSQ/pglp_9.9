@@ -22,6 +22,13 @@ public class CreationGroupeCommand extends CreationFormeCommand {
     List<Element> list = this.dessin.getListe();
     Groupe groupe = new Groupe(this.nom);
 
+    for(int i = 0; i < groupElement.length; i++) {
+      if(!this.dessin.exists(groupElement[i])) {
+        System.out.println("Les éléments formant le groupe n'existent pas.");
+        return;
+      }
+    }
+
     for (int i = 0; i < groupElement.length; i++) {
       for (int j = 0; j < list.size(); j++) {
         Element elem = list.get(j);
