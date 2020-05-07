@@ -23,6 +23,8 @@ public class Dessin {
     return new String(this.nom);
   }
 
+  public void setNom(String nom) {this.nom = nom; }
+
   public void setElementList(List<Element> list) {
     this.elementList = list;
   }

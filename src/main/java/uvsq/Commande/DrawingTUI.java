@@ -60,11 +60,14 @@ public class DrawingTUI {
         command = new SupprimerElementCommand(dessin, nomForme);
 
       } else if (chaineDeCommande.matches("save")) {
-
+        String nom = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
+        Dao.nom = nom;
         command = new SaveCommand(this.dessin);
       } else if (chaineDeCommande.matches("load")) {
         System.out.println("Load" + this.dessin.getNom());
-        command = new LoadCommand(this.dessin.getNom(), this);
+        String nom = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
+        Dao.nom = nom;
+        command = new LoadCommand(Dao.nom, this);
 
       } else if (chaineDeCommande.matches("quit")) {
         command = new QuitterCommand();

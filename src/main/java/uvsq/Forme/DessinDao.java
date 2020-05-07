@@ -10,6 +10,7 @@ public class DessinDao extends Dao<Dessin> {
   @Override
   public Dessin create(Dessin obj) {
     System.out.println("Enter create dessin");
+    obj.setNom(Dao.nom);
     this.connect();
     try (PreparedStatement dessinInsert =
             this.connect.prepareStatement("INSERT INTO Dessin(dnom) values(?)");
