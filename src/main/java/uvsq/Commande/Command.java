@@ -2,6 +2,5 @@ package uvsq.Commande;
 
 public interface Command {
 
-    public void execute();
-
+  public void execute();
 }

@@ -1,8 +1,5 @@
 package uvsq.Forme;
 
-import uvsq.Forme.Element;
-import uvsq.Forme.Forme;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -4,13 +4,10 @@ import static java.lang.System.exit;
 
 public class QuitterCommand implements Command {
 
-    public QuitterCommand() {
+  public QuitterCommand() {}
 
-    }
-
-
-    @Override
-    public void execute() {
-        exit(0);
-    }
+  @Override
+  public void execute() {
+    exit(0);
+  }
 }

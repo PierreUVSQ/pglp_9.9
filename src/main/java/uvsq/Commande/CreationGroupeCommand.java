@@ -3,6 +3,7 @@ package uvsq.Commande;
 import uvsq.Forme.Dessin;
 import uvsq.Forme.Element;
 import uvsq.Forme.Groupe;
+
 import java.util.List;
 
 public class CreationGroupeCommand extends CreationFormeCommand {
@@ -20,6 +21,7 @@ public class CreationGroupeCommand extends CreationFormeCommand {
   public void execute() {
     List<Element> list = this.dessin.getListe();
     Groupe groupe = new Groupe(this.nom);
+
     for (int i = 0; i < groupElement.length; i++) {
       for (int j = 0; j < list.size(); j++) {
         Element elem = list.get(j);

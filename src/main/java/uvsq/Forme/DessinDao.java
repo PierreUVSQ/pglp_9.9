@@ -22,7 +22,8 @@ public class DessinDao extends Dao<Dessin> {
         PreparedStatement groupeDessinInsert =
             this.connect.prepareStatement("INSERT INTO GroupeDessin(dnom, nom) VALUES(?, ?)");
         PreparedStatement rectangleInsert =
-            this.connect.prepareStatement("INSERT INTO RectangleDessin(dnom, nom) VALUES(?, ?)"); ) {
+            this.connect.prepareStatement(
+                "INSERT INTO RectangleDessin(dnom, nom) VALUES(?, ?)"); ) {
       System.out.println("Insert: " + obj.getNom());
       dessinInsert.setString(1, obj.getNom());
       dessinInsert.executeUpdate();
@@ -101,7 +102,7 @@ public class DessinDao extends Dao<Dessin> {
           ResultSet resRectangle = selectRectangle.executeQuery();
           ResultSet resCercle = selectCercle.executeQuery();
           ResultSet resGroupe = selectGroupe.executeQuery(); ) {
-        if(res.next()) {
+        if (res.next()) {
           String n = res.getString("dnom");
         }
         dessin = new Dessin(id);

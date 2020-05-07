@@ -33,7 +33,7 @@ public class RectangleDao extends Dao<Rectangle> {
         this.connect.prepareStatement("SELECT * FROM Rectangle R WHERE R.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        if(res.next()) {
+        if (res.next()) {
           r =
               new Rectangle(
                   res.getString("nom"),

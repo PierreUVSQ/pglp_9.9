@@ -31,7 +31,7 @@ public class CarreDao extends Dao<Carre> {
         this.connect.prepareStatement("SELECT * FROM Carre C WHERE C.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        if(res.next()) {
+        if (res.next()) {
           c =
               new Carre(
                   res.getString("nom"),

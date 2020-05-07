@@ -21,7 +21,7 @@ public class GroupeDao extends Dao<Groupe> {
         PreparedStatement groupeGroupeInsert =
             this.connect.prepareStatement("INSERT INTO GroupeGroupe(gnom, nom) VALUES(?, ?)");
         PreparedStatement rectangleInsert =
-            this.connect.prepareStatement("INSERT INTO RectangleGroupe(gnom, nom) VALUES(?, ?)") ) {
+            this.connect.prepareStatement("INSERT INTO RectangleGroupe(gnom, nom) VALUES(?, ?)")) {
       groupeInsert.setString(1, obj.nom);
       groupeInsert.executeUpdate();
       List<Element> listElem = obj.getListeNonModifiable();
@@ -61,7 +61,6 @@ public class GroupeDao extends Dao<Groupe> {
         }
       }
 
-
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -98,7 +97,7 @@ public class GroupeDao extends Dao<Groupe> {
           ResultSet resRectangle = selectRectangle.executeQuery();
           ResultSet resCercle = selectCercle.executeQuery();
           ResultSet resGroupe = selectGroupe.executeQuery(); ) {
-        if(res.next()) {
+        if (res.next()) {
           String n = res.getString("gnom");
           g = new Groupe(n);
         }

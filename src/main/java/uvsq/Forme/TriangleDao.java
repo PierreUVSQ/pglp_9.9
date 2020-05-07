@@ -35,7 +35,7 @@ public class TriangleDao extends Dao<Triangle> {
         this.connect.prepareStatement("SELECT * FROM Triangle T WHERE T.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        if(res.next()) {
+        if (res.next()) {
           t =
               new Triangle(
                   res.getString("nom"),

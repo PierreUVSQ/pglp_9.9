@@ -17,7 +17,7 @@ public class SupprimerElementCommand implements Command {
 
   @Override
   public void execute() {
-    List <Element> liste = this.dessin.getListe();
+    List<Element> liste = this.dessin.getListe();
     for (int i = 0; i < liste.size(); i++) {
       if (liste.get(i).getNom().matches(aSupprimer)) {
         liste.remove(i);

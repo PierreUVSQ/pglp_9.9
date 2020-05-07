@@ -30,6 +30,8 @@ public class Dessin {
   public void ajoutElement(Element elem) {
     this.elementList.add(elem);
   }
-  public List<Element> getListe(){return this.elementList;}
 
+  public List<Element> getListe() {
+    return this.elementList;
+  }
 }

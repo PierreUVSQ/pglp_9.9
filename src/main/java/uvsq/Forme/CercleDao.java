@@ -31,7 +31,7 @@ public class CercleDao extends Dao<Cercle> {
         this.connect.prepareStatement("SELECT * FROM Cercle C WHERE C.nom = ?")) {
       select.setString(1, id);
       try (ResultSet res = select.executeQuery()) {
-        if(res.next()) {
+        if (res.next()) {
           c =
               new Cercle(
                   res.getString("nom"),
