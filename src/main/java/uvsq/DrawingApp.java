@@ -74,6 +74,7 @@ public class DrawingApp {
       connect.close();
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
+      System.out.println("Chargement de la base de données");
       try {
         connect.close();
       } catch (SQLException ex) {

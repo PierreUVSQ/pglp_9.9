@@ -35,32 +35,32 @@ public class DessinDao extends Dao<Dessin> {
           tmp = new GroupeDao();
           tmp.create((Groupe) elem);
           groupeDessinInsert.setString(1, obj.getNom());
-          groupeDessinInsert.setString(2, elem.nom);
+          groupeDessinInsert.setString(2, Dao.nom + ":" + elem.nom);
           groupeDessinInsert.executeUpdate();
         } else if (elem instanceof Cercle) {
           tmp = new CercleDao();
           tmp.create((Cercle) elem);
           cercleInsert.setString(1, obj.getNom());
-          cercleInsert.setString(2, elem.nom);
+          cercleInsert.setString(2, Dao.nom + ":" + elem.nom);
           cercleInsert.executeUpdate();
         } else if (elem instanceof Rectangle) {
           System.out.println("Insertion rectangle: " + elem.getNom());
           tmp = new RectangleDao();
           tmp.create((Rectangle) elem);
           rectangleInsert.setString(1, obj.getNom());
-          rectangleInsert.setString(2, elem.nom);
+          rectangleInsert.setString(2, Dao.nom + ":" + elem.nom);
           rectangleInsert.executeUpdate();
         } else if (elem instanceof Carre) {
           tmp = new CarreDao();
           tmp.create((Carre) elem);
           carreInsert.setString(1, obj.getNom());
-          carreInsert.setString(2, elem.nom);
+          carreInsert.setString(2, Dao.nom + ":" + elem.nom);
           carreInsert.executeUpdate();
         } else if (elem instanceof Triangle) {
           tmp = new TriangleDao();
           tmp.create((Triangle) elem);
           triangleInsert.setString(1, obj.getNom());
-          triangleInsert.setString(2, elem.nom);
+          triangleInsert.setString(2, Dao.nom + ":" + elem.nom);
           triangleInsert.executeUpdate();
         }
       }

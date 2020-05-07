@@ -11,7 +11,7 @@ public class CarreDao extends Dao<Carre> {
     this.connect();
     try (PreparedStatement carreInsert =
         this.connect.prepareStatement("INSERT INTO Carre(nom, x, y, cote) values(?, ?, ?, ?)"); ) {
-      carreInsert.setString(1, obj.nom);
+      carreInsert.setString(1, Dao.nom + ":" + obj.nom);
       carreInsert.setInt(2, obj.p.x);
       carreInsert.setInt(3, obj.p.y);
       carreInsert.setInt(4, obj.cote);
@@ -34,7 +34,7 @@ public class CarreDao extends Dao<Carre> {
         if (res.next()) {
           c =
               new Carre(
-                  res.getString("nom"),
+                  res.getString("nom").split(":")[1],
                   new Point(
                       Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
                   Integer.parseInt(res.getString("cote")));

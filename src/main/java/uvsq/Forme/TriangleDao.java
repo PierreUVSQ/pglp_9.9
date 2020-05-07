@@ -12,7 +12,7 @@ public class TriangleDao extends Dao<Triangle> {
     try (PreparedStatement insert =
         this.connect.prepareStatement(
             "INSERT INTO Triangle(nom, ax, ay, bx, bay, cx, cy) values(?, ?, ?, ?, ?, ?, ?)"); ) {
-      insert.setString(1, obj.nom);
+      insert.setString(1, Dao.nom + ":" + obj.nom);
       insert.setInt(2, obj.a.x);
       insert.setInt(3, obj.a.y);
       insert.setInt(4, obj.b.x);
@@ -38,7 +38,7 @@ public class TriangleDao extends Dao<Triangle> {
         if (res.next()) {
           t =
               new Triangle(
-                  res.getString("nom"),
+                  res.getString("nom").split(":")[1],
                   new Point(res.getInt("ax"), res.getInt("ay")),
                   new Point(res.getInt("bx"), res.getInt("bay")),
                   new Point(res.getInt("cx"), res.getInt("cy")));

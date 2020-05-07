@@ -7,8 +7,10 @@ import java.util.List;
 
 public class GroupeDao extends Dao<Groupe> {
 
+
   @Override
   public Groupe create(Groupe obj) {
+    String prefix = Dao.nom + ":";
     this.connect();
     try (PreparedStatement groupeInsert =
             this.connect.prepareStatement("INSERT INTO Groupe(gnom) values(?)");
@@ -22,7 +24,7 @@ public class GroupeDao extends Dao<Groupe> {
             this.connect.prepareStatement("INSERT INTO GroupeGroupe(gnom, nom) VALUES(?, ?)");
         PreparedStatement rectangleInsert =
             this.connect.prepareStatement("INSERT INTO RectangleGroupe(gnom, nom) VALUES(?, ?)")) {
-      groupeInsert.setString(1, obj.nom);
+      groupeInsert.setString(1, prefix + obj.nom);
       groupeInsert.executeUpdate();
       List<Element> listElem = obj.getListeNonModifiable();
       Dao tmp;
@@ -31,32 +33,32 @@ public class GroupeDao extends Dao<Groupe> {
         if (elem instanceof Groupe) {
           tmp = new GroupeDao();
           tmp.create((Groupe) elem);
-          groupeGroupeInsert.setString(1, obj.nom);
-          groupeGroupeInsert.setString(2, elem.nom);
+          groupeGroupeInsert.setString(1, prefix + obj.nom);
+          groupeGroupeInsert.setString(2, prefix + elem.nom);
           groupeGroupeInsert.executeUpdate();
         } else if (elem instanceof Cercle) {
           tmp = new CercleDao();
           tmp.create((Cercle) elem);
-          cercleInsert.setString(1, obj.nom);
-          cercleInsert.setString(2, elem.nom);
+          cercleInsert.setString(1, prefix + obj.nom);
+          cercleInsert.setString(2, prefix + elem.nom);
           cercleInsert.executeUpdate();
         } else if (elem instanceof Rectangle) {
           tmp = new RectangleDao();
           tmp.create((Rectangle) elem);
-          rectangleInsert.setString(1, obj.nom);
-          rectangleInsert.setString(2, elem.nom);
+          rectangleInsert.setString(1, prefix + obj.nom);
+          rectangleInsert.setString(2, prefix + elem.nom);
           rectangleInsert.executeUpdate();
         } else if (elem instanceof Carre) {
           tmp = new CarreDao();
           tmp.create((Carre) elem);
-          carreInsert.setString(1, obj.nom);
-          carreInsert.setString(2, elem.nom);
+          carreInsert.setString(1, prefix + obj.nom);
+          carreInsert.setString(2, prefix + elem.nom);
           carreInsert.executeUpdate();
         } else if (elem instanceof Triangle) {
           tmp = new TriangleDao();
           tmp.create((Triangle) elem);
-          triangleInsert.setString(1, obj.nom);
-          triangleInsert.setString(2, elem.nom);
+          triangleInsert.setString(1, prefix + obj.nom);
+          triangleInsert.setString(2, prefix + elem.nom);
           triangleInsert.executeUpdate();
         }
       }
@@ -98,7 +100,7 @@ public class GroupeDao extends Dao<Groupe> {
           ResultSet resCercle = selectCercle.executeQuery();
           ResultSet resGroupe = selectGroupe.executeQuery(); ) {
         if (res.next()) {
-          String n = res.getString("gnom");
+          String n = res.getString("gnom").split(":")[1];
           g = new Groupe(n);
         }
 

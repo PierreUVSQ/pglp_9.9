@@ -12,7 +12,8 @@ public class RectangleDao extends Dao<Rectangle> {
     try (PreparedStatement insert =
         this.connect.prepareStatement(
             "INSERT INTO Rectangle(nom, x, y, longueur, hauteur) values(?, ?, ?, ?, ?)"); ) {
-      insert.setString(1, obj.nom);
+      System.out.println("Dans RectangleDao: " + Dao.nom + ":" + obj.nom);
+      insert.setString(1, Dao.nom + ":" + obj.nom);
       insert.setInt(2, obj.bg.x);
       insert.setInt(3, obj.bg.y);
       insert.setInt(4, obj.longueur);
@@ -36,7 +37,7 @@ public class RectangleDao extends Dao<Rectangle> {
         if (res.next()) {
           r =
               new Rectangle(
-                  res.getString("nom"),
+                  res.getString("nom").split(":")[1],
                   new Point(
                       Integer.parseInt(res.getString("x")), Integer.parseInt(res.getString("y"))),
                   Integer.parseInt(res.getString("longueur")),
