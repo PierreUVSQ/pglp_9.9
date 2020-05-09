@@ -54,7 +54,7 @@ public class DrawingTUI {
             break;
           }
         }
-      } else if (chaineDeCommande.matches("delete")) {
+      } else if (chaineDeCommande.matches("remove")) {
 
         nomForme = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
         command = new SupprimerElementCommand(dessin, nomForme);
@@ -68,6 +68,11 @@ public class DrawingTUI {
         String nom = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
         Dao.nom = nom;
         command = new LoadCommand(Dao.nom, this);
+
+      } else if (chaineDeCommande.matches("delete")) {
+        String nom = in.substring(in.indexOf("(") + 1, in.indexOf(")"));
+        Dao.nom = nom;
+        command = new SupprimerDessinCommand(Dao.nom);
 
       } else if (chaineDeCommande.matches("quit")) {
         command = new QuitterCommand();
