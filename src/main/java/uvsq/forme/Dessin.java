@@ -9,6 +9,10 @@ public class Dessin {
   private List<Element> elementList;
   private String nom;
 
+  /**
+   * Groupe principal et sauvegardable.
+   * @param nom Nom du dessin
+   */
   public Dessin(String nom) {
 
     this.nom = nom;
@@ -39,6 +43,11 @@ public class Dessin {
     return this.elementList;
   }
 
+  /**
+   * Vérfie si la forme à ajouter existe.
+   * @param nom Le nom de la forme à vérifier
+   * @return Vrai ou faux
+   */
   public boolean exists(String nom) {
     for (int i = 0; i < this.elementList.size(); i++) {
       if (this.elementList.get(i).getNom().matches(nom)) {

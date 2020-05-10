@@ -13,6 +13,9 @@ public class DrawingApp {
   private Command command;
   private Connection connect;
 
+  /**
+   * Application qui lance le système de dessin et crée la base de données si besoin.
+   */
   public DrawingApp() {
     Statement stmt = null;
     String createTrigger = null;
@@ -171,6 +174,9 @@ public class DrawingApp {
     this.draw = new DrawingTui();
   }
 
+  /**
+   * Exécute les commandes envoyées par l'interface utilisateur.
+   */
   public void run() {
 
     while (true) {

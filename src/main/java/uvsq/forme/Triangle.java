@@ -6,6 +6,13 @@ public class Triangle extends Forme {
   protected Point pointb;
   protected Point pointc;
 
+  /**
+   * Forme du triangle.
+   * @param nom Nom du triangle
+   * @param a Point a
+   * @param b Point b
+   * @param c Point c
+   */
   public Triangle(String nom, Point a, Point b, Point c) {
     super(nom);
     this.pointa = a;
@@ -26,6 +33,11 @@ public class Triangle extends Forme {
             + ")");
   }
 
+  /**
+   * Déplace le point a à la position donnée et tous les autres par rapport à ce point.
+   * @param x Abscisse
+   * @param y Ordonnée
+   */
   public void deplacer(int x, int y) {
     int ancienX = this.pointa.abscisse;
     int ancienY = this.pointa.ordonne;

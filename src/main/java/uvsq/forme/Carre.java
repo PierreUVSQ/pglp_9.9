@@ -5,6 +5,12 @@ public class Carre extends Forme {
   protected Point point;
   protected int cote;
 
+  /**
+   * Forme du carré.
+   * @param nom Nom du carré
+   * @param p Point en bas à gauche
+   * @param cote Distance d'un côté
+   */
   public Carre(String nom, Point p, int cote) {
     super(nom);
     this.point = p;

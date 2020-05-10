@@ -6,6 +6,13 @@ public class Rectangle extends Forme {
   protected int longueur;
   protected int hauteur;
 
+  /**
+   * Forme du rectangle.
+   * @param nom Nom du rectangle
+   * @param bg Point en bas à gauche
+   * @param longueur Longueur
+   * @param hauteur Hauteur
+   */
   public Rectangle(String nom, Point bg, int longueur, int hauteur) {
     super(nom);
     this.bg = bg;

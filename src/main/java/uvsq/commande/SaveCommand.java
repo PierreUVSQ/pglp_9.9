@@ -8,7 +8,7 @@ public class SaveCommand implements Command {
   private Dessin dessin;
 
   /**
-   * Commande qui sauvegarde le dessin
+   * Commande qui sauvegarde le dessin.
    *
    * @param dessin Dessin
    */

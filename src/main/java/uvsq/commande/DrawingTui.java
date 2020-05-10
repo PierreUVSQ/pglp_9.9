@@ -18,6 +18,9 @@ public class DrawingTui {
   private Dessin dessin;
   private Dao dao;
 
+  /**
+   * Classe chargé de l'interface textuelle utilisateur.
+   */
   public DrawingTui() {
 
     this.scanner = new Scanner(System.in, "UTF-8");

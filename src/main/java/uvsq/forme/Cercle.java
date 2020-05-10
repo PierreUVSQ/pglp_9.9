@@ -5,6 +5,12 @@ public class Cercle extends Forme {
   protected Point centre;
   protected int rayon;
 
+  /**
+   * Forme du cercle.
+   * @param nom Nom du cercle
+   * @param centre Point du centre
+   * @param rayon Rayon du cercle
+   */
   public Cercle(String nom, Point centre, int rayon) {
     super(nom);
     this.rayon = rayon;
