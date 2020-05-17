@@ -9,7 +9,7 @@ public abstract class Dao<T> implements AutoCloseable {
 
   protected Connection connect = null;
 
-  public Statement stmt = null;
+  private Statement stmt = null;
 
   public abstract T create(T obj);
 
