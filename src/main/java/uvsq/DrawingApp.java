@@ -183,7 +183,7 @@ public class DrawingApp {
       command = this.draw.nextCommand();
       try {
         command.execute();
-      } catch (NullPointerException ne) {
+      } catch (NullPointerException |java.lang.ClassCastException ne) {
         System.out.println("Que souhaitez-vous ?");
       }
       this.draw.afficherDessin();

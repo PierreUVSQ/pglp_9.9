@@ -159,7 +159,7 @@ public class DrawingTui {
                   nomForme, new Point(ax, ay), new Point(bx, by), new Point(cx, cy), dessin);
         }
       }
-    } catch (StringIndexOutOfBoundsException | InvalidParameterException ie) {
+    } catch (StringIndexOutOfBoundsException | InvalidParameterException | java.lang.ClassCastException ie) {
       System.out.println(
           "Veuillez entrer des informations valides.\n "
               + "Un argument ne peut contenir de caractères spéciaux");

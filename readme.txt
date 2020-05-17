@@ -29,6 +29,6 @@ Important:
 
 - Les espaces ne comptent pas.
 - save et load donnent un nom au dessin. On ne peut pas sauvegarder deux dessins avec le même nom.
-- la commande move appliquée à une forme déplace la forme au point précis (le point a pour le triangle, en bas à gauche pour les carrés et rectangle)
-- la commande move appliquée à un groupe la déplace dans la direction donné (addition par rapport à la direction courante)
+- la commande move est appliquée à une forme et déplace la forme au point précis (le point a pour le triangle, en bas à gauche pour les carrés et rectangle)
+- la commande moveGroup est appliquée à un groupe et la déplace dans la direction donnée (addition par rapport à la direction courante)
 - remove supprime un groupe ou une forme alors que delete est pour la sauvegarde
